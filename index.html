@@ -4,20 +4,35 @@ layout: default
 
 <div class="home">
 
-  <h1 class="page-heading">Posts</h1>
+  <h1 class="page-heading">Personas</h1>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+  <h2>Audience</h2>
+  <p>EOWG determined to focus the web site redesign on meeting the needs of this audience:</p>
+  <ol>
+    <li>Primary:
+      <ul>
+        <li>Doers (includes developers, designers, content creators, web administrators, etc) </li>
+        <li>Planners</li>
+        <li>Advocates</li>
+      </ul>
+    </li>
+    <li>Secondary
+      <ul>
+        <li>Policy makers</li>
+      </ul>
+    </li>
+  </ol>
+  <p>Based on data collected through a survey monkey questionnaire (questions at the end of this report), the following personas were created:</p>
 
+
+    {% for persona in site.personas %}
         <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          {% comment %}<a class="persona-link" href="{{ persona.url | prepend: site.baseurl }}">{% endcomment %}{{ persona.title }}{% comment %}</a>{% endcomment %}
+          <small style="float: right;"><a href="https://github.com/w3c/wai-website-personas/edit/gh-pages/{{ persona.relative_path }}">Edit</a></small>
         </h2>
-      </li>
+        <img style="float: right; margin: 0 0 1em 1em; border: 6px solid #fff;" src="img/{{ persona.img }}" alt="Portrait (Stock Photo)">{{ persona.content }}
+        <p><strong>Cartegory: {{persona.category}}</strong></p>
+        <hr style="margin-bottom: 2em;">
     {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>
